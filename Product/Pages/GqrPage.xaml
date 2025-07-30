@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Product.Pages.NewPage1"
+             Title="NewPage1">
+    <Grid>
+        <ImageButton Source="qr.png"
+                     Clicked="ImageButton_Clicked"
+               HeightRequest="200"
+               WidthRequest="200"></ImageButton>
+    </Grid>
+</ContentPage>
+    

@@ -66,6 +66,19 @@ namespace Product.ViewModels
 
             }
         }
+        [RelayCommand]
+        private async Task BuyNow()
+        {
+            if(Pizza.CartQuantity > 0)
+            {
+                await Shell.Current.GoToAsync(nameof(CheckoutPage), animate: true);
+            }
+            else
+            {
+                 await Toast.Make("Please select the quantity using the plus (+)button", ToastDuration.Short)
+                    .Show();
+            }
+        }
         public void Dispose()
         {
             _cartviewModel.CartCleared -= OnCartCleared;

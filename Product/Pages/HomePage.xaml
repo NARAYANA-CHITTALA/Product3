@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-    
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:vm="clr-namespace:Product.ViewModels"
              xmlns:models="clr-namespace:Product.Models"
              x:Class="Product.Pages.HomePage"
-             Title="Pizza World" BackgroundColor="White"
+             Title="Electronic World" BackgroundColor="White"
              Padding="15"
              x:DataType="vm:HomeViewModel"
              >
+    <ContentPage.MenuBarItems>
+        <!--<MenuBarItem Text="Back" >
+            <MenuFlyoutItem Text="Back" Clicked="BackButton_Clicked"/>
+        </MenuBarItem>-->
+    </ContentPage.MenuBarItems>
     <ScrollView>
         <VerticalStackLayout Spacing="10">
+           
             <Border StrokeShape="RoundRectangle 10"
                     StrokeThickness="0"
-                    BackgroundColor="Goldenrod"
+                    BackgroundColor="LightBlue"
                     VerticalOptions="Start"
                     Padding="15">
                 <Grid ColumnDefinitions="*, 150"
@@ -30,16 +37,17 @@
 
                     </VerticalStackLayout>
                     <Button Grid.Row="1"
-                            Grid.Column="0"
-                            Text="Get it now"
-                            BackgroundColor="PaleGoldenrod"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            CornerRadius="22"
-                            HorizontalOptions="Center"
-                            Padding="50, 0"/>
+                             Grid.Column="0"
+                             Text="Get it now"
+                             BackgroundColor="WhiteSmoke"
+                             TextColor="Black"
+                             FontAttributes="Bold"
+                             CornerRadius="22"
+                             HorizontalOptions="Center"
+                             Padding="50, 0"/>
+
                     <Image Grid.RowSpan="2" Grid.Column="1"
-                           Source="p1.png"
+                           Source="sh1.jpg"
                            HeightRequest="150"
                            WidthRequest="150"/>
 
@@ -47,9 +55,9 @@
             </Border>
             <Border StrokeShape="RoundRectangle 22"
                     StrokeThickness="2"
-                    Stroke="Goldenrod">
+                    Stroke="LightBlue">
                 <Label Text="Search here..."
-                       TextColor="Goldenrod"
+                       TextColor="Black"
                        Padding="10, 14"/>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoToAllPizzasPageCommand }"
@@ -59,7 +67,7 @@
 
             <BoxView HeightRequest="15"
                      Color="Transparent"/>
-            
+
 
             <Grid ColumnDefinitions="*, *">
                 <Label Grid.Column="0"
@@ -78,28 +86,25 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
-            
+
 
             <FlexLayout BindableLayout.ItemsSource="{Binding Pizzas}"
-                        Wrap="Wrap">
-                
-                
+                        Wrap="Wrap"
+                        >
+
+
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:Pizza">
 
-                        <Border FlexLayout.Basis="50%"
+                        <Border FlexLayout.Basis="25%"
                             StrokeShape="RoundRectangle 10"
                                 StrokeThickness="0"
-                                BackgroundColor="PaleGoldenrod"
+                                BackgroundColor="LightBlue"
                                 Padding="10"
                                 Margin="2">
                             <Grid RowDefinitions="150, Auto, auto, Auto"
                                   RowSpacing="5">
-                                
-                            
-
-
-                            <Image Grid.Row="0"
+                                <Image Grid.Row="0"
                                          Source="{Binding Image}"
                                    HeightRequest="150"
                                    WidthRequest="130"/>
@@ -114,16 +119,16 @@
                                            VerticalOptions="Center"
                                            FontAttributes="Bold"/>
                                     <HorizontalStackLayout        Grid.Column="1"
-                                                                                                          HorizontalOptions="End"
-                                                                                                                     Spacing="2"
-                                                                                                          VerticalOptions="Center">
+                                                                  HorizontalOptions="End"
+                                                                  Spacing="2"
+                                                                  VerticalOptions="Center">
 
-                                        <Label Text="4"/>
+                                        <Label Text="4.3"/>
                                         <Image Source="star.png"
                                                HeightRequest="15"
                                                WidthRequest="15">
                                             <Image.Behaviors>
-                                                <toolkit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
+                                                <toolkit:IconTintColorBehavior TintColor="Green"/>
                                             </Image.Behaviors>
                                         </Image>
 
@@ -131,29 +136,34 @@
                                 </Grid>
                                 <Button Grid.Row="3"
                                             Text="View more"
-                                            BackgroundColor="Gold"
+                                            BackgroundColor="WhiteSmoke"
                                             TextColor="Black"
                                             CornerRadius="22"
                                             FontAttributes="Bold"
                                             VerticalOptions="End"
                                             HorizontalOptions="Center"
                                             Padding="25, 0"
-                                        Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=GoToDetailsPageCommand}" CommandParameter="{Binding .}"/>
+                                      
+                                       Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:HomeViewModel}},
+                                           Path=GoToCategoryPageCommand}" CommandParameter="{Binding .}"/>
+
                             </Grid>
                             <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=GoToDetailsPageCommand}" CommandParameter="{Binding .}"/>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:HomeViewModel}},
+                                        Path=GoToCategoryPageCommand}" CommandParameter="{Binding .}"/>
                             </Border.GestureRecognizers>
 
-
+                           
 
 
 
                         </Border>
                     </DataTemplate>
-                                  
-                </BindableLayout.ItemTemplate> 
+
+                </BindableLayout.ItemTemplate>
+              
             </FlexLayout>
         </VerticalStackLayout>
     </ScrollView>
-   
+
 </ContentPage>

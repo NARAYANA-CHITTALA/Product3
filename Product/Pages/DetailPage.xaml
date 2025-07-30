@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
               xmlns:vm="clr-namespace:Product.ViewModels"
@@ -18,15 +19,16 @@
                 <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="WidthRequest" Value="40"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                 <Setter Property="Padding" Value="0"/>
-                    
-       
+                <Setter Property="Padding" Value="100"/>
+
+
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
         <ScrollView Padding="15">
             <VerticalStackLayout Spacing="15">
+               
                 <Image Source="{Binding Pizza.Image}"
                        HeightRequest="200"
                        WidthRequest="200"
@@ -36,50 +38,73 @@
                        FontSize="20"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"/>
-                <Grid ColumnDefinitions="*, *">
+                <Grid ColumnDefinitions="*, *"
+                      HorizontalOptions="Center"
+                      
+                     
+                     >
                     <Label Grid.Column="0"
-                          Text="{Binding Pizza.Price, StringFormat='${0:N2}'}"
+                         Text="{Binding Pizza.Price, StringFormat='${0:N2}'}"
+                           
                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="550,0,0,0"
+                           WidthRequest="200"
                            FontSize="18"/>
                     <HorizontalStackLayout   Grid.Column="1"
                               HorizontalOptions="End"
                               Spacing="2"
                               VerticalOptions="Center">
 
-                           <Label Text="4"/>
-                           <Image Source="star.png"
+                        <Label  Text="4.3"
+                              HorizontalOptions="End"
+                                Margin="500,0,0,0"
+                                 />
+                        <Image Source="star.png"
+                               
+                               HorizontalOptions="End"
+                               Margin="0,0,0,0"
                                    HeightRequest="15"
-                                   WidthRequest="15">
-                                <Image.Behaviors>
-                                   <toolkit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
-                              </Image.Behaviors>
-                          </Image>
+                                   WidthRequest="25">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="Orange"/>
+                            </Image.Behaviors>
+                        </Image>
 
                     </HorizontalStackLayout>
                 </Grid>
 
                 <Label Text="Description"
-                       FontSize="15"
+                       FontSize="20"
+                       WidthRequest="150"
+                       HeightRequest="30"
                        FontAttributes="Bold"
-                       Margin="0, 10"/>
+                     
+                       VerticalOptions="Center"/>
 
-                <Label FontSize="14"
+                <Label FontSize="20"
                        LineHeight="1.5"
-                         Text="This is some random description for this pizza,so that we can display this on the pizza details page, to design the UI.This is some random description for this pizza,so that we can display this on the pizza details page,to design the UI.This is some random description for this pizza,so that we can display this on the pizza details page, to design the UI"/>
+                       WidthRequest="1000"
+                       Margin="0,0,50,1000"
+                       HorizontalTextAlignment="Center"
+                       HeightRequest="150"
+                         Text="This is some random description for this Product,so that we can display this on the Product details page, to design the UI.This is some random description for this Product,so that we can display this on the Product details page,to design the UI.This is some random description for this Product,so that we can display this on the Product details page, to design the UI"
+                       />
 
 
             </VerticalStackLayout>
         </ScrollView>
         <Border StrokeThickness="0"
                 x:Name="Bottombox"
-                BackgroundColor="DarkGoldenrod"
+                BackgroundColor="LightBlue"
                 Margin="-1"
                 VerticalOptions="End"
                 HeightRequest="150"
-                Padding="15"
-                StrokeShape="{OnPlatform Android='RoundReactangle 30,30,0,0', Default='RoundRectangle 0'}">
+                WidthRequest="1240"
+                Padding="15">
+            <!--StrokeShape="{OnPlatform Android='RoundReactangle 30,30,0,0', Default='RoundRectangle 0'}">-->
             <Border.Shadow>
-                <Shadow Brush="Gold"
+                <Shadow Brush="LightBlue"
                         Radius="100"/>
             </Border.Shadow>
 
@@ -89,8 +114,9 @@
                        Grid.Column="0"
                        Text="{Binding Pizza.Amount, StringFormat='${0:N2}'}"
                        FontSize="20"
-                       TextColor="White"
+                       TextColor="Black"
                        FontAttributes="Bold"
+                       Margin="0,0,0,0"
                        VerticalOptions="Center"/>
                 <Grid Grid.Row="0"
                       Grid.Column="1"
@@ -99,53 +125,76 @@
                       VerticalOptions="Center">
                     <ImageButton Grid.Column="0"
                                  Source="decrement.png"
+                                 Padding="10"
+                                 WidthRequest="40"
+                                 HeightRequest="20"
+                                 Background="LightBlue"
                                  Style="{StaticResource QuantityBtn}"
                                  Command="{Binding RemoveFromCartCommand}">
                         <ImageButton.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="Gold"/>
+                            <toolkit:IconTintColorBehavior TintColor="Red"/>
                         </ImageButton.Behaviors>
                     </ImageButton>
                     <Label Grid.Column="1"
                            Text="{Binding Pizza.CartQuantity}"
-                           TextColor="White"
+                           TextColor="Black"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                            FontSize="25"/>
                     <ImageButton Grid.Column="2"
                         Source="increment.png"
+                                 Padding="10"
+                                 WidthRequest="30"
+                                 HeightRequest="10"
+                                 Background="LightBlue"
                          Style="{StaticResource QuantityBtn}"
                                  Command="{Binding AddToCartCommand}">
                         <ImageButton.Behaviors>
-                            <toolkit:IconTintColorBehavior TintColor="Gold"/>
+                            <toolkit:IconTintColorBehavior TintColor="ForestGreen"/>
                         </ImageButton.Behaviors>
                     </ImageButton>
                 </Grid>
 
-                <Button Grid.Row="1"
+                <Button Grid.Column="0"
                             Grid.ColumnSpan="2"
-                            Text="View Cart"
-                        BackgroundColor="Goldenrod"
+                            Text="Add to Cart"
+                        FontAttributes="Bold"
+                       
                         HorizontalOptions="Center"
                         CornerRadius="22"
                         Padding="80, 10"
                         VerticalOptions="End"
-                        Margin="0, 20"
+                        Margin="0, 70,50,0"
                         Command="{Binding ViewCartCommand}"/>
+                <Button 
+                    Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="Buy Now"
+                        BackgroundColor="Orange"
+                        HorizontalOptions="Center"
+                        CornerRadius="22"
+                        Padding="80, 10"
+                        VerticalOptions="End"
+                        Margin="0, 70,0,0"
+                        Command="{Binding BuyNowCommand}"/>
 
             </Grid>
-            
+                       
+
         </Border>
-       
+
         <ImageButton Source="{OnPlatform Android='right_arrow', Default='back.png'}"
                      VerticalOptions="Start"
                      HorizontalOptions="Start"
                      Margin="15"
+                     Padding="10"
                      HeightRequest="5"
                    
                      Clicked="ImageButton_Clicked">
             <ImageButton.Behaviors>
-                <toolkit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
+                <toolkit:IconTintColorBehavior TintColor="Black"/>
             </ImageButton.Behaviors>
         </ImageButton>
+        
     </Grid>
 </ContentPage>

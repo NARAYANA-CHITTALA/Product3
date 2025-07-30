@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Product.Pages.CategoryPage"
+             xmlns:vm="clr-namespace:Product.ViewModels"
+            xmlns:models="clr-namespace:Product.Models"
+             Title="CategoryPage"
+             x:DataType="vm:CategoryPageViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <FlexLayout Wrap="Wrap">
+                <Border FlexLayout.Basis="25%"            
+                     StrokeShape="RoundRectangle 10"
+                     StrokeThickness="0"
+                     BackgroundColor="LightBlue"
+                     Padding="10"
+                     Margin="2">
+                    <Grid RowDefinitions="150, Auto, auto, Auto"
+                        RowSpacing="5">
+                        <Image Grid.Row="0"
+                              Source="lappy.jpg"
+                              HeightRequest="150"
+                              WidthRequest="130"/>
+                        <Label Grid.Row="1"
+                    Text="Laptop"
+                    HorizontalOptions="Center"
+                        FontSize="20"/>
+                        <Grid Grid.Row="2"
+           ColumnDefinitions="*, *">
+                            <Label Grid.Column="0"
+                    Text="123"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"/>
+                            <HorizontalStackLayout        Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           Spacing="2"
+                                           VerticalOptions="Center">
+
+                                <Label Text="4.3"/>
+                                <Image Source="star.png"
+                        HeightRequest="15"
+                        WidthRequest="15">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="Green"/>
+                                    </Image.Behaviors>
+                                </Image>
+
+                            </HorizontalStackLayout>
+                        </Grid>
+                        <Button Grid.Row="3"
+                     Text="View more"
+                     BackgroundColor="WhiteSmoke"
+                     TextColor="Black"
+                     CornerRadius="22"
+                     FontAttributes="Bold"
+                     VerticalOptions="End"
+                     HorizontalOptions="Center"
+                     Padding="25, 0"
+                     Clicked="Button_Clicked"/>
+
+
+
+                    </Grid>
+                </Border>
+            </FlexLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

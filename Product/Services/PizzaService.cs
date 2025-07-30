@@ -9,31 +9,55 @@ namespace Product.Services
         {
             new Pizza
             {
-                Name = "Pizza 1",
-                Image = "p2.png",
-                Price = 5.1
+                Name = "Laptops",
+                Image = "lappy.jpg",
+                Price = 1025.1
             },
             new Pizza
             {
-                Name = "Pizza 2",
-                Image = "p3.png",
-                Price = 2.5
+                Name = "Telivisions",
+                Image = "tv.jpg",
+                Price = 766.5
             },
             new Pizza
             {
-                Name = "Pizza 3",
-                Image = "p4.png",
-                Price = 9.5
+                Name = "Watches",
+                Image = "watches.jpg",
+                Price = 199.5
             },
             new Pizza
             {
-                Name = "Pizza 4",
-                Image = "p5.png",
-                Price = 1.45
+                Name = "Mobiles",
+                Image = "mobile.jpg",
+                Price = 999.45
+            },
+             new Pizza
+            {
+                Name = "Earpods",
+                Image = "ep.jpg",
+                Price = 295.1
+            },
+            new Pizza
+            {
+                Name = "Washing Machine",
+                Image = "whm.jpg",
+                Price = 652.5
+            },
+            new Pizza
+            {
+                Name = "Refrigirators",
+                Image = "fdg.png",
+                Price = 899.5
+            },
+            new Pizza
+            {
+                Name = "Sound Bars",
+                Image = "sb.jpg",
+                Price = 499.45
             }
         };
         public IEnumerable<Pizza> GetallPizzas() => _pizzas;
-        public IEnumerable<Pizza> GetPopularPizzas(int count = 6) => _pizzas.OrderBy(p=> Guid.NewGuid())
+        public IEnumerable<Pizza> GetPopularPizzas(int count = 8) => _pizzas.OrderBy(p=> Guid.NewGuid())
             .Take(count);
 
         public IEnumerable<Pizza> SearchPizzas(string searchTerm) =>

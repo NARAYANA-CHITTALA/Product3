@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+xmlns:sf="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Product.ViewModels"
+             BackgroundColor="WhiteSmoke"
+             x:Class="Product.Pages.OrderDetails"
+             Title="OrderDetails">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel></local:ViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Back" >
+            <MenuFlyoutItem Text="Back" Clicked="MenuFlyoutItem_Clicked"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <ContentPage.Content>
+
+
+        <VerticalStackLayout>
+        <sf:SfDataForm
+                x:Name="DataForm"
+            Grid.Row="0"
+                WidthRequest="500"
+            DataObject="{Binding Model}"
+            LayoutType="TextInputLayout"/>
+
+            <VerticalStackLayout>
+                <Grid RowDefinitions="auto,auto,auto,auto"></Grid>
+                <buttons:SfRadioButton Grid.Row="0" x:Name="cod" Text="Cash On Delivery" StateChanged="cod_StateChanged_1"></buttons:SfRadioButton>
+                <buttons:SfRadioButton Grid.Row="1" x:Name="GPay" Text="Google Pay" StateChanged="GPay_StateChanged"></buttons:SfRadioButton>
+                <buttons:SfRadioButton Grid.Row="2" x:Name="Paytm" Text="Paytm" StateChanged="Paytm_StateChanged"></buttons:SfRadioButton>
+                <buttons:SfRadioButton Grid.Row="3" x:Name="Phonepe" Text="Phonepe" StateChanged="Phonepe_StateChanged"></buttons:SfRadioButton>
+            </VerticalStackLayout>
+
+
+
+        </VerticalStackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ContentPage.Content>
+
+</ContentPage>

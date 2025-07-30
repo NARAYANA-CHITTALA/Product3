@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Product.Pages.CartPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -7,150 +8,158 @@
                xmlns:models="clr-namespace:Product.Models"
              Title="Cart"
              x:DataType="vm:CartViewModel"
-             BackgroundColor="PaleGoldenrod">
+             BackgroundColor="LightBlue">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Clear Cart"
                      Command="{Binding ClearCartCommand}"/>
     </ContentPage.ToolbarItems>
-    
+    <ContentPage.MenuBarItems>
 
-    <Grid>
-        <ScrollView>
-            <VerticalStackLayout Padding="10">
-                <CollectionView ItemsSource="{Binding Items}">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical"
+
+
+       <MenuBarItem Text="Back" >
+        <MenuFlyoutItem Text="Back" Clicked="MenuFlyoutItem_Clicked"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+           <Grid>
+            <ScrollView>
+                <VerticalStackLayout Padding="10">
+
+                    <CollectionView ItemsSource="{Binding Items}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="10"/>
 
 
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.EmptyView>
-                        <VerticalStackLayout HorizontalOptions="Center"
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <VerticalStackLayout HorizontalOptions="Center"
                      VerticalOptions="Center" Spacing="15">
-                            <BoxView HeightRequest="100"
+                                <BoxView HeightRequest="100"
              Color="Transparent"/>
-                            <Label Text="No items in the cart"
+                                <Label Text="No items in the cart"
              FontSize="25"
            TextColor="Gray"
              HorizontalTextAlignment="Center">
-                                
-                            </Label>
-                            <Button Text="Explore all pizzas"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Goldenrod"
-                                    Clicked="Button_Clicked"/>
-                        </VerticalStackLayout>
 
-                    </CollectionView.EmptyView>
-                    
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Pizza">
-                            <Border StrokeShape="RoundRectangle 15"
-                    StrokeThickness="0"
-                    BackgroundColor="White"
-                    Padding="10">
+                                </Label>
+                                <Button Text="Explore all Items"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="PaleTurquoise"
+                                    Clicked="Button_Clicked"/>
+                            </VerticalStackLayout>
+
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Pizza">
+                                <Border StrokeShape="RoundRectangle 15"
+                                StrokeThickness="0"
+                                BackgroundColor="White"
+                                Padding="10">
                                 <Grid ColumnDefinitions="25, Auto, 50, *, 80, 25">
-                                    <Label Grid.Column="0"
+                                        <Label Grid.Column="0"
                            Text="{Binding CartQuantity}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                                            FontSize="18"
                                            FontAttributes="Bold"/>
-                                    <Label Grid.Column="1"
+                                        <Label Grid.Column="1"
                            Text="x"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                                            FontSize="18"
                                          FontAttributes="Bold"/>
-                                    <Image Grid.Column="2"
+                                        <Image Grid.Column="2"
                            Source="{Binding Image}"
                            HeightRequest="25"
                            WidthRequest="25"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"/>
-                                    <VerticalStackLayout Grid.Column="3"
+                                        <VerticalStackLayout Grid.Column="3"
                                          VerticalOptions="Center"
                                          Spacing="2">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Price, StringFormat='${0:N2}'}"
+                                            <Label Text="{Binding Name}"/>
+                                            <Label Text="{Binding Price, StringFormat='${0:N2}'}"
                                                FontSize="12"
                                                TextColor="Black"/>
 
-                                    </VerticalStackLayout>
-                                    <Label Grid.Column="4"
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="4"
                            Text="{Binding Amount, StringFormat='${0:N2}'}"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
                                            FontSize="15"
                                            FontAttributes="Bold"/>
-                                    <Image Grid.Column="5"
+                                        <Image Grid.Column="5"
                            Source="trash.png"
                            HeightRequest="25"
                            WidthRequest="25"
                            VerticalOptions="Center"
                            HorizontalOptions="End">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior TintColor="Red"/>
-                                        </Image.Behaviors>
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CartViewModel}}, Path=RemoveCartItemCommand}"
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior TintColor="Red"/>
+                                            </Image.Behaviors>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:CartViewModel}}, Path=RemoveCartItemCommand}"
                                                                   CommandParameter="{Binding Name}"/>
-                                        </Image.GestureRecognizers>
+                                            </Image.GestureRecognizers>
 
-                                    </Image>
+                                        </Image>
 
-                                </Grid>
+                                    </Grid>
 
-                            </Border>
+                                </Border>
 
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
 
-            </VerticalStackLayout>
-        </ScrollView>
-        <Border StrokeShape="RoundRectangle 40"
-                BackgroundColor="DarkGoldenrod"
+                </VerticalStackLayout>
+            </ScrollView>
+            <Border StrokeShape="RoundRectangle 40"
+                BackgroundColor="DimGray"
                 StrokeThickness="0"
                 VerticalOptions="End"
                 Margin="5"
                 Padding="10">
-            <Grid ColumnDefinitions="*, *">
-                <Label Grid.Column="0"
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
                        Padding="18, 0"
                        TextColor="White"
                        VerticalOptions="Center"
                          >
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Total: &#10;"
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Total: &#10;"
                                   FontSize="18"/>
-                            <Span Text="{Binding TotalAmount, StringFormat='${0:N2}'}"
+                                <Span Text="{Binding TotalAmount, StringFormat='${0:N2}'}"
                                   FontSize="20"
                                   FontAttributes="Bold"/>
-                            
-                        </FormattedString>
-                    </Label.FormattedText>
-                    
-                </Label>
 
-                <Button Grid.Column="1"
-                        Text="Place Order"
-                        BackgroundColor="Goldenrod"
-                        CornerRadius="22"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End"
-                        Padding="25, 10"
-                        Command="{Binding PlaceOrderCommand}"/>
-            </Grid>
+                            </FormattedString>
+                        </Label.FormattedText>
 
-        </Border>
+                    </Label>
 
-        <Button x:Name="back1" Clicked="back1_Clicked" Background="red" WidthRequest="200" HeightRequest="100"></Button>
+                    <Button Grid.Column="1"
+                       Clicked="Button_Clicked_1" 
+                            Text="Place  order" 
+                             CornerRadius="22"
+                             VerticalOptions="Center"
+                             HorizontalOptions="End"
+                             Padding="25, 10"
+                            Background="Blue"/>
+                </Grid>
+
+            </Border>
+
+            
 
 
+        </Grid>
+ 
 
-    </Grid>
-    
 </ContentPage>

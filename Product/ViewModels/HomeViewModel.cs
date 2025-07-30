@@ -1,6 +1,8 @@
 ﻿
 
+
 using Product.Services;
+using System.Reflection.Metadata;
 
 namespace Product.ViewModels
 {
@@ -24,17 +26,29 @@ namespace Product.ViewModels
             };
             await Shell.Current.GoToAsync(nameof(AllPizzasPage), animate : true,parameters);
         }
+        //[RelayCommand]
+        //private async Task GoToDetailsPage(Pizza pizza)
+        //{
+        //    var parameters = new Dictionary<string, object>
+        //    {
+        //        [nameof(DetailsViewModel.Pizza)] = pizza
+
+
+        //    };
+        //    await Shell.Current.GoToAsync(nameof(DetailPage), animate: true, parameters);
+        //}
+        //[RelayCommand]
+        //private async Task GoToMobilePage(Pizza mobile)
+        //{
+        //    await Shell.Current.GoToAsync(nameof(MobilePage), animate: true);
+
+        //}
         [RelayCommand]
-        private async Task GoToDetailsPage(Pizza pizza)
+        private async Task GoToCategoryPage(Pizza pizza)
         {
-            var parameters = new Dictionary<string, object>
-            {
-                [nameof(DetailsViewModel.Pizza)] = pizza
+          
 
-
-            };
-            await Shell.Current.GoToAsync(nameof(DetailPage), animate: true, parameters);
+            await Shell.Current.GoToAsync(nameof(MobilePage), animate: true );
         }
-            
     }
 }

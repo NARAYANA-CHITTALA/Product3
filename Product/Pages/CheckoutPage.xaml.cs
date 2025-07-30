@@ -2,10 +2,10 @@ namespace Product.Pages;
 
 public partial class CheckoutPage : ContentPage
 {
-	public CheckoutPage()
-	{
-		InitializeComponent();
-	}
+    public CheckoutPage()
+    {
+        InitializeComponent();
+    }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -20,15 +20,17 @@ public partial class CheckoutPage : ContentPage
         await img.ScaleTo(1.5);
         await img.ScaleTo(1);
 
-        homeBtn.FadeTo(1, length: 500);
-        await homeBtn.ScaleTo(1);
+        //ImageButton.FadeTo(1, length: 400);
+        //await ImageButton.ScaleTo(1);
     }
 
-    private async void homeBtn_Clicked(object sender, EventArgs e)
+    //private async void sfButton_Clicked(object sender, EventArgs e)
+    //{
+    //    await Shell.Current.GoToAsync($"//{nameof(HomePage)}",animate:true);
+    //}
+
+    private async void ImageButton_Clicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"//{nameof(HomePage)}", animate: true);
-
     }
-
-   
 }

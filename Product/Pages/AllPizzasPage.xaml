@@ -12,7 +12,7 @@
         <DataTrigger TargetType="ContentPage"
                      Binding="{Binding FromSearch}"
                      Value="True">
-            <Setter Property="Title" Value="Search for pizza"/>
+            <Setter Property="Title" Value="Search for Items"/>
         </DataTrigger>
         
     </ContentPage.Triggers>
@@ -20,14 +20,14 @@
     <Grid RowDefinitions="Auto, *">
         <SearchBar Grid.Row="0"
                    x:Name="searchBar"
-                   Placeholder="Search for pizza..."
-                   PlaceholderColor="Goldenrod"
+                   Placeholder="Search for Products..."
+                   PlaceholderColor="Black"
                    CancelButtonColor="Red"
-                   TextColor="DarkGoldenrod"
+                   TextColor="CornflowerBlue"
                    SearchCommand="{Binding SearchPizzasCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar},Path=Text}"
                    TextChanged="searchBar_TextChanged"/>
-
+       
         <ScrollView Grid.Row="1"
                     Margin="5">
             <VerticalStackLayout>
@@ -41,7 +41,7 @@
                         <DataTemplate x:DataType="models:Pizza">
                             <Border StrokeShape="RoundRectangle 10"
                                     StrokeThickness="0"
-                                    BackgroundColor="PaleGoldenrod"
+                                    BackgroundColor="LightBlue"
                                     Padding="10"
                                     Margin="5">
                                 <Grid ColumnDefinitions="130, *"
@@ -65,12 +65,12 @@
                                                                       Spacing="2"
                                                                       VerticalOptions="Center">
 
-                                                <Label Text="4"/>
+                                                <Label Text="4.3"/>
                                                 <Image Source="star.png"
                                                   HeightRequest="15"
                                                   WidthRequest="15">
                                                     <Image.Behaviors>
-                                                        <toolkit:IconTintColorBehavior TintColor="DarkGoldenrod"/>
+                                                        <toolkit:IconTintColorBehavior TintColor="Green"/>
                                                     </Image.Behaviors>
                                                 </Image>
 
@@ -78,7 +78,8 @@
                                         </Grid>
                                         <Border StrokeShape="RoundRectangle 25"
                                                 StrokeThickness="0"
-                                                BackgroundColor="Gold"
+                                                BackgroundColor="Red"
+                                                
                                                 HeightRequest="45"
                                               HorizontalOptions="Center"
                                               Padding="30, 5"
@@ -88,18 +89,17 @@
                                                 
                                                 <HorizontalStackLayout Spacing="2" Padding="2">
 
-                                            <Label Text="View more"
-                                                                              VerticalOptions="Center"/>
-
-
-
-                                            <Image Source="right_arrow.png"
+                                                <Label Text="View more"
+                                                   VerticalOptions="Center"/>
+                                                    
+                                                <Image Source="right_arrow.png"
                                                            HeightRequest="30"
                                                            VerticalOptions="Center"/>
 
                                         </HorizontalStackLayout>
                                         <Border.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:AllPizzaViewModel}}, Path=GoToDetailsPageCommand}" CommandParameter="{Binding .}"/>
+                                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:AllPizzaViewModel}}, 
+                                                        Path=GoToDetailsPageCommand}" CommandParameter="{Binding .}"/>
                                         </Border.GestureRecognizers>
 
                                         </Border>
@@ -115,7 +115,7 @@
                                              VerticalOptions="Center">
                             <BoxView HeightRequest="100"
                                      Color="Transparent"/>
-                            <Label Text="=No pizzas found"
+                            <Label Text="=No Item Found"
                                      FontSize="25"
                                    TextColor="Gray"
                                      HorizontalTextAlignment="Center">
@@ -141,7 +141,7 @@
                            IsRunning="{Binding Searching}"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           Color="DarkGoldenrod"/>
+                           Color="Blue"/>
     </Grid>
     
 </ContentPage>

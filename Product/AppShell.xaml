@@ -5,12 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Pages="clr-namespace:Product.Pages"
     Shell.FlyoutBehavior="Disabled"
-    Shell.BackgroundColor="DarkGoldenrod">
+    Shell.BackgroundColor="DarkSlateBlue">
 
     <ShellContent
         Title=""
-        ContentTemplate="{DataTemplate Pages:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate Pages:LoginPage}"
+        Route="LoginPage" />
     <ShellContent
     Title="Home"
     ContentTemplate="{DataTemplate Pages:HomePage}"

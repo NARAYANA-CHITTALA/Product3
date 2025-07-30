@@ -1,4 +1,5 @@
 namespace Product.Pages;
+using Product.Pages;
 
 public partial class CartPage : ContentPage
 {
@@ -16,8 +17,18 @@ public partial class CartPage : ContentPage
 
     }
 
-    private void back1_Clicked(object sender, EventArgs e)
+    private void Button_Clicked_1(object sender, EventArgs e)
     {
-       
+        Navigation.PushAsync(new OrderDetails());
+    }
+
+    private void MenuFlyoutItem_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+    }
+
+    private void ImageButton_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

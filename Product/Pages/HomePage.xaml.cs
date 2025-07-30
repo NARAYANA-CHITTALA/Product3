@@ -9,4 +9,14 @@ public partial class HomePage : ContentPage
 		_homeViewModel = homeViewModel;
 		BindingContext = _homeViewModel;
 	}
+
+    private void BackButton_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PushAsync(new MainPage());
+    }
+
+    //private async void Button_Clicked(object sender, EventArgs e)
+    //{
+    //    await Shell.Current.GoToAsync($"//{nameof(MobilePage)}");
+    //}
 }

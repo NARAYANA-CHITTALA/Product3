@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
+using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using Product.Services;
 using Product.ViewModels;
@@ -14,6 +15,7 @@ namespace Product
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+            .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -31,15 +33,17 @@ namespace Product
         private static IServiceCollection AddPizzaServices(IServiceCollection services) 
         {
             services.AddSingleton<PizzaService>();
+            services.AddSingleton<MobileService>();
             services.AddSingleton<HomePage>()
                      .TryAddSingleton<HomeViewModel>();
             services.AddSingletonWithShellRoute<HomePage,
-                HomeViewModel>(nameof(HomePage));
+               HomeViewModel>(nameof(HomePage));
             services.AddTransientWithShellRoute<AllPizzasPage,AllPizzaViewModel>(nameof(AllPizzasPage));
             services.AddTransientWithShellRoute<DetailPage, DetailsViewModel>(nameof(DetailPage));
-            
+            services.AddTransientWithShellRoute<MobilePage, MobilePageViewModel>(nameof(MobilePage));
             services.AddSingleton<CartViewModel>();
             services.AddTransient<CartPage>();
+            services.AddSingleton<CategoryPage>();
             return services;
         }
     }

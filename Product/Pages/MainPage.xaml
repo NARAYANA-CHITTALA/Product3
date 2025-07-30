@@ -3,31 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Product.Pages.MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="DarkGoldenrod">
+             BackgroundColor="WhiteSmoke">
     <Grid RowDefinitions="Auto, *, Auto"
           Padding="15, 25">
         <Label Grid.Row="0"
-               Text="Pizza World"
+               Text="Electronic World"
                FontSize="50"
                HorizontalOptions="Center"
                FontAttributes="Bold"/>
         <Image Grid.Row="1"
-               Source="pizza.png"
+               Source="electronic.png"
+               Background="Transparent"
+               BackgroundColor="Transparent"
                HeightRequest="250"
                WidthRequest="250"
                VerticalOptions="Center"
                HorizontalOptions="Center"/>
         <VerticalStackLayout Grid.Row="2"
-                             Spacing="15">
-            <Label Text="The Taste of Italian Pizza"
+                             Spacing="20">
+            <Label Text="The Place of Global Electronics"
                    FontSize="40"
                    FontAttributes="Bold"/>
-            <Label Text="Feel the taste of mouth watering pizza from its origin country"
+            <Label Text="Shop all the Electronic needs here......."
                    FontSize="18"
                    LineHeight="1.2"/>
             <Border StrokeShape="RoundRectangle 25"
                     StrokeThickness="0"
-                    BackgroundColor="Goldenrod"
+                    BackgroundColor="LightBlue"
                     HeightRequest="50">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
@@ -41,7 +43,7 @@
                                        WidthRequest="100"
                                        Padding="0, 5">
 
-                    <Label Text="Get Started"
+                    <Label Text="Shop Now"
                            VerticalOptions="Center"
                            FontSize="18"
                            />
@@ -50,9 +52,26 @@
                            HeightRequest="30"/>
                 </HorizontalStackLayout>
             </Border>
-        </VerticalStackLayout> 
+        </VerticalStackLayout>
+
+      
+
     </Grid>
 
     
 
 </ContentPage>
+
+<!--<BoxView Grid.Row="3"  Color="Transparent" />
+<Image Grid.Row="3"
+  Margin="0,0,210,0"
+Source="cr.png"
+ HorizontalOptions="Center"
+ VerticalOptions="End"
+ WidthRequest="15"
+ HeightRequest="15"/>
+<Label Grid.Row="3"
+ Text="GamanaEcommerce@2023"
+ HorizontalOptions="Center"
+ VerticalOptions="End"
+ FontAttributes="Bold"/>-->
